@@ -1,0 +1,41 @@
+# allowlist.yml
+# This is a TEMPLATE for defining suppression rules to filter out known benign events
+# from the Sigma alert report.
+#
+# How it works:
+# Each suppression rule has a 'name', a 'description', and a list of 'conditions'.
+# An event is suppressed if ALL conditions within a single suppression rule are met for that event.
+# Field names used in conditions should match the column names in your final alert CSV
+# (e.g., 'Initiating Process File Name', 'Process Command Line', 'Sigma Rule Title').
+#
+# Operators:
+#   equals: Exact match (case-insensitive for strings).
+#   contains: Substring match (case-insensitive).
+#   startswith: Prefix match (case-insensitive).
+#   endswith: Suffix match (case-insensitive).
+#   in: Value is one of the items in the 'values' list (case-insensitive for strings).
+#   contains_any: Event value contains any of the strings in the 'values' list.
+#   startswith_any: Event value starts with any of the strings in the 'values' list.
+#   endswith_any: Event value ends with any of the strings in the 'values' list.
+#
+# IMPORTANT: Customize this file to your environment. The examples below are illustrative.
+
+suppressions:
+  # Add your custom suppression rules below.
+  # Here is a generic example of a single suppression rule:
+  - name: "Generic Example: Suppress MyCompany Tool Activity"
+    description: "Suppresses alerts from a known internal tool (MyCompanyTool.exe) performing routine tasks."
+    conditions:
+      - field: "File Name" # This should be a column name from your CSV report, e.g., the process name
+        operator: "equals"
+        value: "MyCompanyTool.exe"
+      - field: "Process Command Line" # Another column from your CSV report
+        operator: "contains"
+        value: "--routine-task-argument"
+      # Optional: You can make the suppression rule-specific
+      # - field: "Sigma Rule Title"
+      #   operator: "equals"
+      #   value: "Specific Sigma Rule To Suppress For This Tool"
+  #
+  # You can add multiple suppression rules. Each rule is evaluated independently.
+  # An event is suppressed if ALL conditions within ANY single suppression rule are met.

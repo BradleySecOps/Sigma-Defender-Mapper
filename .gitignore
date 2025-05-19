@@ -1,0 +1,25 @@
+# Python
+*.pyc
+__pycache__/
+venv/
+*.env
+*.env.*
+env/
+ENV/
+
+# IDE/Editor specific
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Output files (consider adding specific report names if they are consistent)
+*.csv
+*.json
+
+# Test data (if it's large or potentially sensitive)
+# Add specific sensitive test data files here if needed
+
+# OS specific
+.DS_Store
+Thumbs.db
