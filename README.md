@@ -2,6 +2,7 @@
 
 **Scan Microsoft Defender timeline CSVs with thousands of Sigma rules for deep, offline threat hunting and enhanced incident response.**
 
+![Script Overview and Help](images/Overview.png)
 ---
 
 ## Table of Contents
